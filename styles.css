@@ -1,0 +1,260 @@
+body{
+    background-color: rgb(14, 14, 48);
+    margin: 0px;
+}
+
+p{
+    user-select: none;
+}
+
+img{
+    user-select: none;
+}
+
+.top-bar{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: rgb(6, 6, 37);
+    z-index: 1000;
+}
+.top-bar-2{
+    gap: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* max-width: 2000px; */
+}
+
+.top-bar-2-1{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap: 30px;
+}
+
+.top-bar-2-img{
+    width: 50px;
+}
+
+.top-bar-3{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.top-bar-3-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.top-bar-3-1:hover{
+    transform: scale(1.1);
+}
+
+.top-bar-p{
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+
+}
+.top-bar-3-img{
+    width: 25px;
+}
+
+
+.top-bar-search-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.top-bar-search{
+    width: 250px;
+    padding: 7px 0px 7px 15px;
+    border: 1px solid rgb(4, 0, 255);
+    border-radius: 5px 5px 5px 5px;
+    background-color: rgba(18, 98, 173, 0.397);
+    color: white;
+}
+
+input::placeholder{
+    color: white;
+    font-size: 13px;
+    opacity: 0.5;
+}
+
+.top-bar-search-img{
+    width: 30px;
+    border-radius: 0px 5px 5px 0px;
+    cursor: pointer;
+}
+
+.home{
+    padding: 50px 0px;
+}
+
+.home-img-div{
+    width: 100%;
+    position: relative;
+}
+
+.home-img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.home-img-2{
+    width: 70px;
+}
+
+.home-img-p{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: rgb(202, 224, 0);
+    font-size: 70px;
+    rotate: calc(-20deg);
+    top: 20px;
+    left: 40px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.categories-div{
+    padding: 0px 40px;
+}
+
+.categories{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.categories-1{
+    padding: 5px 20px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.384);
+    border: 1px solid rgba(3, 7, 231, 0.801);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.categories-1:hover{
+    transform: scale(1.1);
+}
+
+.active{
+    transform: scale(1.1);
+    background-color: rgba(4, 47, 187, 0.281);
+
+}
+
+.home-div-1{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(300px,1fr));
+    gap: 30px;
+    padding:15px 30px 0px 30px;}
+
+.home-div-2{
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0,0,0,0.3);
+    padding: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    gap: 10px;
+}
+.home-div-2:hover{
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(7, 17, 109, 0.747);
+}
+
+.card-img-1{
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.card-p-a{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+}
+
+.card-p-a-1-1{
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.card-p-a-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.247);
+    border-radius: 10px;
+    padding: 1px 8px;
+}
+.card-p-a-2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.card-p-a-3{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.card-p-a-4{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-p-1{
+    font-size: large;
+    color: white;
+    margin: 10px 0 10px 0;
+    padding-left: 10px;
+}
+
+.card-p-last{
+    background-color: rgba(119, 16, 253, 0.534);
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.card-p-1-title{
+    font-size: 26px;
+    color: rgb(179, 255, 0);
+
+}
+
