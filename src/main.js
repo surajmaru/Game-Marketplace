@@ -6,11 +6,11 @@ const parent = document.querySelector(".home-div-1");
 
 const search = document.querySelector(".top-bar-search");
 
-const noGames = document.querySelector(".no-game-p");
-
-const searchBtn = document.querySelector(".top-bar-search-img");
-
 const homeBtn = document.querySelector(".top-bar-p-home");
+
+const recommendationsBtn = document.querySelector(".top-bar-p-recommendations");
+
+const recommendModal = document.querySelector(".recommendations-modal");
 
 const wishlistBtn = document.querySelector(".top-bar-p-wishlist");
 
@@ -18,10 +18,8 @@ const catDiv = document.querySelector(".categories-div");
 
 const catDivInner = document.querySelector(".categories");
 
+const allBtn = document.querySelector(".active-a");
 const catBtn = document.querySelectorAll(".categories-1");
-
-const buyBtn = document.querySelector(".card-p-buy");
-
 
 let wishlistArray = JSON.parse(localStorage.getItem("wishlistArray")) || [];
 
@@ -34,13 +32,14 @@ let wishlistArray = JSON.parse(localStorage.getItem("wishlistArray")) || [];
         "No ratings"
     };
 
-    function render(game){
+    function render(game, delay = 0){
 
         const isWishlisted = wishlistArray.includes(game.id);
 
         const wishlistText = isWishlisted ? "Wishlisted ✅" : "Wishlist ❤️";
             const html= `
     
+            <div class="game-card" style="animation-delay:${delay}ms">
         <div class="home-div-2" data-id=${game.id}>
                 <img draggable="false" class="card-img-1"  src="${game.img}">
                 <div class="card-p-a card-p-a-1-1">
@@ -57,6 +56,13 @@ let wishlistArray = JSON.parse(localStorage.getItem("wishlistArray")) || [];
                 </div>
 
                 <div class="card-p-a card-p-a-1">
+                    <p class="card-p-1">Genre:</p>
+                    <div class="card-p-a-3">
+                        ${game.type.filter(pp => pp !== "fav").map(p=> `<p class="card-p-1">${p}</p>`).join("")}
+                    </div>
+                </div>
+                
+                <div class="card-p-a card-p-a-1">
                     <p class="card-p-1">Available on:</p>
                     <div class="card-p-a-3">
                         ${game.platform.map(p=> `<p class="card-p-1">${p}</p>`).join("")}
@@ -69,6 +75,7 @@ let wishlistArray = JSON.parse(localStorage.getItem("wishlistArray")) || [];
                     <p class="card-p-1 card-p-last card-p-buy">Buy Now</p>
                 </div>
             </div>
+            </div>
     
     `;
     parent.insertAdjacentHTML("beforeend",html);
@@ -76,8 +83,8 @@ let wishlistArray = JSON.parse(localStorage.getItem("wishlistArray")) || [];
 
 const gamesLoad = function(){
     parent.innerHTML = "";
-    games.forEach(game => {
-        render(game);
+    games.forEach((game, index) => {
+        render(game, index * 120);
      });
 };
 gamesLoad();
@@ -86,9 +93,33 @@ gamesLoad();
 search.addEventListener("input",(e)=>{
     const query = e.target.value.toLowerCase();
     // console.log(query);
+
+    catDivInner.classList.remove("hidden");
+    const msg = catDiv.querySelector(".wishlist-header");
+    if(msg) msg.remove();
+
+    wishlistBtn.classList.remove("active-2");
+    recommendationsBtn.classList.remove("active-2");
+    recommendModal.classList.add("hidden");
+    homeBtn.classList.remove("active-2");
+    catBtn.forEach(btn => btn.classList.remove("active"));
     
+    if(query === "") {
+        
+        const msg = catDiv.querySelector(".wishlist-header");
+        if(msg) msg.remove();
+
+        wishlistBtn.classList.remove("active-2");
+        recommendationsBtn.classList.remove("active-2");
+        recommendModal.classList.add("hidden");
+        homeBtn.classList.add("active-2");
+        allBtn.classList.add("active");
+        // renderGames(games);
+    };
+
+
     const filteredGames = games.filter(game => game.title.toLowerCase().includes(query));
-    console.log(filteredGames);
+    // console.log(filteredGames);
     renderGames(filteredGames);
 });
 
@@ -104,37 +135,64 @@ function renderGames(gamesArray){
         }
 
         
-        gamesArray.forEach(game => {
-        render(game);
+    //     gamesArray.forEach(game => {
+    //     render(game);
+    // });
+    gamesArray.forEach((game, index) => {
+        render(game, index * 120);
     });
 };
 
-homeBtn.addEventListener("click", ()=>{
+homeBtn.addEventListener("click", (e)=>{
+    search.value = "";
+    
     window.scrollTo({
         top:0,
         behavior:"smooth",
-    })
+    });
+    
+    if(homeBtn.classList.contains("active-2")) return;
+    
+    catDiv.classList.remove("hidden");
+
     catDivInner.classList.remove("hidden");
     const msg = catDiv.querySelector(".wishlist-header");
     if(msg) msg.remove();
+    
+    recommendModal.classList.add("hidden");
+    recommendationsBtn.classList.remove("active-2");
+    wishlistBtn.classList.remove("active-2");
+    homeBtn.classList.add("active-2");
+    
+    catBtn.forEach(btn => {
+        btn.classList.remove("active");
+    })
+    catBtn[0]?.classList.add("active");
+    
     renderGames(games);
 });
 
 catBtn.forEach(btn => {
     btn.addEventListener("click", ()=>{
+        search.value = "";
+        noGameDiv.innerHTML = "";
+
         const type = btn.dataset.category;
         console.log(type);
 
         const catFilterGame = type === "all" ? games : games.filter(g => g.type.includes(type));
         console.log(catFilterGame);
 
+        if(btn.classList.contains("active")) return;
+
         catBtn.forEach(b => b.classList.remove("active"));
 
         btn.classList.add("active");
         
+
         parent.innerHTML = "";
-        catFilterGame.forEach(game => {
-            render(game);
+        catFilterGame.forEach((game, index) => {
+            render(game, index * 120);
         })
     });
 });
@@ -204,18 +262,26 @@ parent.addEventListener("click", (e)=>{
         }
 
         
-        gamesArray.forEach(game => {
-        render(game);
+        gamesArray.forEach((game, index) => {
+        render(game, index * 120);
     });
 };
 
     function showWishlist(){
-
+        search.value = "";
+        
+        if(wishlistBtn.classList.contains("active-2")) return;
+        
+        recommendModal.classList.add("hidden");
+        homeBtn.classList.remove("active-2");
+        recommendationsBtn.classList.remove("active-2");
+        wishlistBtn.classList.add("active-2");
+        
         catDivInner.classList.add("hidden");
-
+        
         const oldWrapper = catDiv.querySelector(".wishlist-header");
         if(oldWrapper) oldWrapper.remove();
-
+        
         const wrapper = document.createElement("div");
         wrapper.className = "wishlist-header";
         const img = document.createElement("img");
@@ -225,20 +291,75 @@ parent.addEventListener("click", (e)=>{
         const msg = document.createElement("p");
         msg.className = "buy-msg";
         msg.textContent = "Wishlisted Games";
-        wrapper.appendChild(msg)
-        wrapper.appendChild(img)
+        wrapper.appendChild(msg);
+        wrapper.appendChild(img);
+        
         catDiv.appendChild(wrapper);
-
+        
         const wishlistedGames = games.filter(game => wishlistArray.includes(game.id));
         renderWishlistGames(wishlistedGames);
+        // search.value = "";
 
         if(wishlistArray.length === 0){
             catDiv.removeChild(wrapper);
             setTimeout(()=>{
+                
+                wishlistBtn.classList.remove("active-2");
+                homeBtn.classList.add("active-2");
+
+                catBtn.forEach(btn => {
+                    btn.classList.remove("active");
+                })
+                catBtn[0]?.classList.add("active");
+                
                 renderGames(games);
+                
                 catDivInner.classList.remove("hidden");
+            
             },3000)
         }
     };
            
     wishlistBtn.addEventListener("click", showWishlist);
+
+
+    //
+
+    recommendationsBtn.addEventListener("click", () => {
+        // search.value = "";
+
+        if (recommendationsBtn.classList.contains("active-2")) {
+        recommendationsBtn.classList.remove("active-2");
+        recommendModal.classList.add("hidden");
+        // homeBtn.classList.add("active-2");
+        // renderGames(games);
+        return;
+        }
+
+        homeBtn.classList.remove("active-2");
+        wishlistBtn.classList.remove("active-2");
+        recommendationsBtn.classList.add("active-2")
+
+
+        // if(recommendationsBtn.classList.contains("active-2")) return;
+        // homeBtn.classList.remove("active-2");
+        // wishlistBtn.classList.remove("active-2");
+        // recommendationsBtn.classList.add("active-2");
+
+
+        const recomGames = games.filter(g => g.type.includes("fav")).slice(0,4);
+
+        
+        recommendModal.innerHTML = "";
+        
+        recomGames.forEach(game => {
+            const card = document.createElement("div");
+            card.className = "mini-game-card";
+            card.innerHTML = `
+            <img src="${game.img}" alt="${game.title}" style=" height:140px; object-fit:cover; border-radius:5px;">
+            <p style="color:white; font-size:18px; text-align:center;">${game.title}</p>
+            `;
+            recommendModal.appendChild(card);
+        })
+        recommendModal.classList.remove("hidden");
+    });

@@ -77,7 +77,7 @@ export const games = [
         ratings: 4.5,
         platform: ["PC","|","PS5"],
         iswishlist: false,
-        type: "horror",
+        type: ["horror"],
     },
     {
         id:9,
@@ -107,7 +107,7 @@ export const games = [
         ratings: 4.5,
         platform: ["PC","|","PS5","|","XBOX"],
         iswishlist: false,
-        type: "story",
+        type: ["story"],
     },
     {
         id:12,

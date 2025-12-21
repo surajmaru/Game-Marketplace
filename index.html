@@ -15,13 +15,15 @@
                 <p class="top-bar-p">GAME MARKETPLACE</p>
             </div>
             <div class="top-bar-3">
-                <div class="top-bar-3-1 top-bar-p-home">
+                <div class="top-bar-3-1 top-bar-p-home active-2">
                     <p class="top-bar-p ">Home</p>
-                    <img draggable="false" class="top-bar-3-img" src="./img/arrow-down.png">
+                    <img draggable="false" class="top-bar-3-img top-bar-3-img-1" src="./img/arrow-down.png">
                 </div>
-                <div class="top-bar-3-1">
+                <div class="top-bar-3-1 top-bar-p-recommendations recommendations-wrapper">
                     <p class="top-bar-p">Recommendations</p>
                     <img draggable="false" class="top-bar-3-img" src="./img/arrow-down.png">
+                    <div class="recommendations-modal hidden">
+                    </div>
                 </div>
                 <!-- <div class="top-bar-3-1">
                     <p class="top-bar-p">Categories</p>
@@ -39,6 +41,8 @@
         </div>
     </div>
 
+    
+
     <section class="home" id="home">
 
         <div class="home-img-div">
@@ -52,11 +56,11 @@
         
         <div class="categories-div">
             <div class="categories">
-                <button data-category="all" class="active categories-1">All</button>
+                <button data-category="all" class="active active-a categories-1">All</button>
                 <button data-category="story" class="categories-1">Story</button>
                 <button data-category="action" class="categories-1">Action</button>
                 <button data-category="horror" class="categories-1">Horror</button>
-                <button data-category="fav" class="categories-1">My Personal Fav</button>
+                <!-- <button data-category="fav" class="categories-1">My Personal Fav</button> -->
             </div>
         </div>
         

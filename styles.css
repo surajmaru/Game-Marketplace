@@ -54,22 +54,23 @@ img{
     align-items: center;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
+    padding: 5px 10px;
+    border-radius: 10px;
 }
 
 .top-bar-3-1:hover{
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
 }
 
 .top-bar-p{
     color: white;
     font-weight: bold;
     font-size: 1.2rem;
-
+    margin: 0px;
 }
 .top-bar-3-img{
     width: 25px;
 }
-
 
 .top-bar-search-div{
     display: flex;
@@ -114,7 +115,7 @@ input::placeholder{
     object-fit: cover;
 }
 
-.home-img-2{
+/* .home-img-2{
     width: 70px;
 }
 
@@ -131,7 +132,7 @@ input::placeholder{
     left: 40px;
     padding: 20px;
     border-radius: 20px;
-}
+} */
 
 .categories-div{
     padding: 10px 40px;
@@ -164,7 +165,11 @@ input::placeholder{
     transform: scale(1.1);
     background-color: rgba(4, 47, 187, 0.281);
     box-shadow: 0 5px 30px rgba(38, 0, 255, 0.603)
-
+}
+.active-2{
+    transform: scale(1.1);
+    /* background-color: rgba(4, 47, 187, 0.281); */
+    box-shadow: 0 5px 30px rgb(4, 47, 187);
 }
 
 .hidden{
@@ -175,7 +180,9 @@ input::placeholder{
     display: grid;
     grid-template-columns: repeat(4, minmax(300px,1fr));
     gap: 30px;
-    padding:15px 30px 0px 30px;}
+    padding:15px 30px 0px 30px;
+}
+    
 
 .home-div-2{
     /* width: 100%; */
@@ -283,4 +290,53 @@ input::placeholder{
   color: rgb(0, 225, 255);
   font-size: 30px;
   margin: 0px;
+}
+
+
+
+/* one by one appear animation */
+
+@keyframes fadeUp {
+    from {
+    opacity: 0;
+    transform: translateY(20px);
+}
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+.game-card {
+    opacity: 0;
+    animation: fadeUp 0.5s ease forwards;
+}
+
+/* */
+
+.recommendations-wrapper {
+    position: relative;
+}
+
+.recommendations-modal {
+    position: absolute;
+    top: calc(100% + 20px);
+    left: -420px;
+    background-color: rgba(0,0,0,0.8);
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: max-content;
+    z-index: 1000;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.recommendations-modal.hidden {
+    display: none;
 }
