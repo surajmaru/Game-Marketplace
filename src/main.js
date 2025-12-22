@@ -1,5 +1,7 @@
 import { games } from "./games.js";
 
+const homeImg = document.querySelector(".home-img");
+
 const noGameDiv = document.querySelector(".no-games-div");
 
 const parent = document.querySelector(".home-div-1");
@@ -42,12 +44,13 @@ let wishlistArray = JSON.parse(localStorage.getItem("wishlistArray")) || [];
             <div class="game-card" style="animation-delay:${delay}ms">
         <div class="home-div-2" data-id=${game.id}>
                 <img draggable="false" class="card-img-1"  src="${game.img}">
+                <div class="card-p-1 cp1">
                 <div class="card-p-a card-p-a-1-1">
                     <p class="card-p-1 card-p-1-title">${game.title}</p>
-                    <div class="card-p-a-1">
-                        <p class="card-p-1">Price:</p>
-                        <p class="card-p-1">₹ ${game.price}</p>
-                    </div>
+                </div>
+                <div class="card-p-a-1">
+                    <p class="card-p-1">Price:</p>
+                    <p class="card-p-1">₹ ${game.price}</p>
                 </div>
 
                 <div class="card-p-a card-p-a-1">
@@ -63,20 +66,33 @@ let wishlistArray = JSON.parse(localStorage.getItem("wishlistArray")) || [];
                 </div>
                 
                 <div class="card-p-a card-p-a-1">
-                    <p class="card-p-1">Available on:</p>
+                    <p class="card-p-1 ao">Available on:</p>
                     <div class="card-p-a-3">
-                        ${game.platform.map(p=> `<p class="card-p-1">${p}</p>`).join("")}
+                        ${game.platform.map(p=> `<p class="card-p-1 ao">${p}</p>`).join("")}
                     </div>
                 </div>
 
+                
+                
+                <div class="game-details hidden">
+                <video class="modal-video" controls>${game.video}</video>
+                <div class="game-details-2">
+                <p class="details-title">${game.title}</p>
+                <p class="details-desc">${game.description}</p>
+                <p class="details-copiessold">${game.copiessold}</p>
+                <p class="details-close">Close ✖</p>
+                </div>
+                </div>
+                
+                </div>
                 <div class="card-p-a card-p-a-4">
-                    <p class="card-p-1 card-p-last">view</p>
+                    <p class="card-p-1 card-p-last card-p-view">view</p>
                     <p class="card-p-1 card-p-last card-p-wishlist">${wishlistText}</p>
                     <p class="card-p-1 card-p-last card-p-buy">Buy Now</p>
                 </div>
             </div>
-            </div>
-    
+        </div>
+                
     `;
     parent.insertAdjacentHTML("beforeend",html);
     }
@@ -214,7 +230,7 @@ parent.addEventListener("click", (e)=>{
     // msg.style.color = "white";
     // msg.style.fontSize = "20px";
 
-    btn.textContent = "Not Now❌";
+    btn.textContent = "Soon.....";
     btn.style.pointerEvents = "none";
     btn.style.opacity = "0.7";
 
@@ -325,7 +341,7 @@ parent.addEventListener("click", (e)=>{
 
     //
 
-    recommendationsBtn.addEventListener("click", () => {
+    recommendationsBtn.addEventListener("click", (e) => {
         // search.value = "";
 
         if (recommendationsBtn.classList.contains("active-2")) {
@@ -340,12 +356,9 @@ parent.addEventListener("click", (e)=>{
         wishlistBtn.classList.remove("active-2");
         recommendationsBtn.classList.add("active-2")
 
+        // if(e.target.classList.contains){
 
-        // if(recommendationsBtn.classList.contains("active-2")) return;
-        // homeBtn.classList.remove("active-2");
-        // wishlistBtn.classList.remove("active-2");
-        // recommendationsBtn.classList.add("active-2");
-
+        // }
 
         const recomGames = games.filter(g => g.type.includes("fav")).slice(0,4);
 
@@ -355,6 +368,7 @@ parent.addEventListener("click", (e)=>{
         recomGames.forEach(game => {
             const card = document.createElement("div");
             card.className = "mini-game-card";
+            // card.style.padding = "10px";
             card.innerHTML = `
             <img src="${game.img}" alt="${game.title}" style=" height:140px; object-fit:cover; border-radius:5px;">
             <p style="color:white; font-size:18px; text-align:center;">${game.title}</p>
@@ -362,4 +376,144 @@ parent.addEventListener("click", (e)=>{
             recommendModal.appendChild(card);
         })
         recommendModal.classList.remove("hidden");
+
     });
+
+    //////////////////////////////////////////////////
+    
+    /////////////////////////////////////////////////
+    // game view details logic + video play.
+    parent.addEventListener("click", (e)=>{
+                
+        if(e.target.classList.contains("card-p-view")) {
+        const card = e.target.closest(".home-div-2");
+        const details1 = card.querySelector(".game-details");
+        const video = details1.querySelector(".modal-video");
+        
+        document.querySelectorAll(".game-details.show").forEach(d => {
+            if(d !== details1) {
+                const v = d.querySelector(".modal-video");
+                v.pause();
+                v.src = "";
+                d.classList.remove("show")
+                d.classList.add("hidden");
+            };
+        });
+        
+        details1.classList.remove("hidden");
+        requestAnimationFrame(()=> details1.classList.add("show"));
+        
+        const id = Number(card.dataset.id);
+        const game = games.find(g => g.id === id);
+        video.src = game.video;
+        video.currentTime = 0;
+        video.play();
+    }
+
+
+        if(e.target.classList.contains("details-close")) {
+            const details2 = e.target.closest(".game-details");
+            const video = details2.querySelector(".modal-video");
+
+            details2.classList.remove("show");
+            
+            video.pause();
+            video.src = "";
+
+            setTimeout(()=>{
+                details2.classList.add("hidden");
+            }, 400);
+        }
+        
+
+    })
+    ////////////////////////////////////////////////////
+
+    /////////////////////////////////////////////////////
+//     parent.addEventListener("click", (e) => {
+//     if (!e.target.classList.contains("card-p-view")) return;
+
+//     const card = e.target.closest(".home-div-2");
+//     const id = Number(card.dataset.id);
+//     const game = games.find(g => g.id === id);
+
+//     openGameModal(game);
+//     });
+
+//     //
+//     const modal = document.querySelector(".game-modal");
+//     const video = modal.querySelector(".modal-video");
+
+//     function openGameModal(game) {
+//     modal.classList.remove("hidden");
+
+//     video.src = game.video;
+//     video.currentTime = 0;
+//     video.play();
+
+//     modal.querySelector(".modal-title").textContent = game.title;
+//     // modal.querySelector(".modal-price").textContent = `₹ ${game.price}`;
+//     // modal.querySelector(".modal-rating").textContent = getRating(game.ratings);
+//     }
+//     //
+//     modal.addEventListener("click", (e) => {
+//     if (
+//         e.target.classList.contains("game-modal") ||
+//         e.target.classList.contains("modal-close")
+//     ) {
+//         closeModal();
+//     }
+//     });
+
+//     function closeModal() {
+//     video.pause();
+//     video.src = "";
+//     modal.classList.add("hidden");
+// }
+
+    /////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////
+
+//     parent.addEventListener("click", (e) => {
+//     if (!e.target.classList.contains("card-p-view")) return;
+
+//     const card = e.target.closest(".home-div-2");
+//     const id = Number(card.dataset.id);
+//     const game = games.find(g => g.id === id);
+
+//     openGameModal(game);
+//     });
+
+//     //
+//     const modal = document.querySelector(".game-modal");
+//     const video = modal.querySelector(".modal-video");
+
+//     function openGameModal(game) {
+//     modal.classList.remove("hidden");
+
+//     video.src = game.video;
+//     video.currentTime = 0;
+//     video.play();
+
+//     // modal.querySelector(".modal-title").textContent = game.title;
+//     // modal.querySelector(".modal-price").textContent = `₹ ${game.price}`;
+//     // modal.querySelector(".modal-rating").textContent = getRating(game.ratings);
+//     }
+//     //
+//     modal.addEventListener("click", (e) => {
+//     if (
+//         e.target.classList.contains("game-modal") ||
+//         e.target.classList.contains("modal-close")
+//     ) {
+//         closeModal();
+//     }
+//     });
+
+//     function closeModal() {
+//     video.pause();
+//     video.src = "";
+//     modal.classList.add("hidden");
+// }
+
+///////////////////////////////////////////////////////////////
