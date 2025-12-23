@@ -85,10 +85,12 @@ let wishlistArray = JSON.parse(localStorage.getItem("wishlistArray")) || [];
                 </div>
                 
                 </div>
+
                 <div class="card-p-a card-p-a-4">
                     <p class="card-p-1 card-p-last card-p-view">view</p>
                     <p class="card-p-1 card-p-last card-p-wishlist">${wishlistText}</p>
                     <p class="card-p-1 card-p-last card-p-buy">Buy Now</p>
+                    <a href="${game.store}" target="_blank"><p class="card-p-buy">Visit the game!</p></a>
                 </div>
             </div>
         </div>
@@ -515,5 +517,10 @@ parent.addEventListener("click", (e)=>{
 //     video.src = "";
 //     modal.classList.add("hidden");
 // }
+
+///////////////////////////////////////////////////////////////
+
+const footerYear = document.querySelector(".footer-year");
+footerYear.textContent = new Date().getFullYear();
 
 ///////////////////////////////////////////////////////////////

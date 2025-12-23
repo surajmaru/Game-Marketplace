@@ -11,6 +11,7 @@ export const games = [
         type: ["action","fav"],
         description:"Cyberpunk 2077 drops you into Night City, a neon-soaked world where tech upgrades your body and choices shape your legend.",
         copiessold:"Sold ~35 Million+ copies worldwide",
+        store:"https://store.steampowered.com/app/1091500/Cyberpunk_2077/",
     },
     {
         id:2,
@@ -24,6 +25,7 @@ export const games = [
         type: ["story", "fav"],
         description:"Detroit: Become Human explores a near future where androids question their purpose—and their humanity.",
         copiessold:"Sold ~11 Million+ copies worldwide",
+        store:"https://store.steampowered.com/app/1222140/Detroit_Become_Human/",
     },
     {
         id:3,
@@ -37,6 +39,7 @@ export const games = [
         type: ["story"],
         description:"God of War reimagines the legend—an epic journey of gods, monsters, and a father learning to be human.",
         copiessold:"Sold ~23 Million+ copies worldwide",
+        store:"https://store.steampowered.com/app/1593500/God_of_War/",
     },
     {
         id:4,
@@ -50,6 +53,7 @@ export const games = [
         type: ["story","fav"],
         description:"God of War Ragnarök follows Kratos and Atreus as they journey through the Nine Realms, facing gods, monsters, and the coming of Ragnarök.",
         copiessold:"Sold ~15 Million+ copies worldwide",
+        store:"https://store.steampowered.com/app/2322010/God_of_War_Ragnark/",
     },
     {
         id:5,
@@ -63,6 +67,7 @@ export const games = [
         type: ["story","action"],
         description:"Grand Theft Auto V follows three criminals navigating crime, chaos, and ambition in the sprawling city of Los Santos.",
         copiessold:"Sold ~220 Million+ copies worldwide",
+        store:"https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/",
     },
     {
         id:6,
@@ -76,6 +81,7 @@ export const games = [
         type: ["story"],
         description:"The Last of Us follows Joel and Ellie as they journey across a broken world, fighting to survive and protect what remains.",
         copiessold:"Sold ~17 Million+ copies worldwide",
+        store:"https://store.steampowered.com/app/1888930/The_Last_of_Us_Part_I/",
     },
     {
         id:7,
@@ -89,6 +95,7 @@ export const games = [
         type: ["story","fav"],
         description:"Step into a world reclaimed by nature, where every shadow hides danger, every fight is a test, and your choices shape Ellie’s journey.",
         copiessold:"Sold ~10 Million+ copies worldwide",
+        store:"https://store.steampowered.com/app/2531310/The_Last_of_Us_Part_II_Remastered/",
     },
     {
         id:8,
@@ -102,6 +109,7 @@ export const games = [
         type: ["horror"],
         description:"Little Nightmares II plunges you into a creepy, twisted world where shadows hide monsters, and every corner hides a new danger.",
         copiessold:"Sold ~3 Million+ copies worldwide",
+        store:"https://store.steampowered.com/app/860510/Little_Nightmares_II/",
     },
     {
         id:9,
@@ -115,6 +123,7 @@ export const games = [
         type: ["story"],
         description:"Ride across mountains, rivers, and towns, hunt, rob, and live the life of an outlaw in a breathtakingly detailed open world.",
         copiessold:"Sold ~79 Million+ copies worldwide",
+        store:"https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/",
     },
     {
         id:10,
@@ -128,6 +137,7 @@ export const games = [
         type: ["action", "fav"],
         description:"Spider-Man: Miles Morales swings you through a vibrant, snowy New York as Miles discovers his powers and what it truly means to be a hero.",
         copiessold:"Sold ~8 Million+ copies worldwide",
+        store:"https://store.steampowered.com/app/1817190/Marvels_SpiderMan_Miles_Morales/",
     },
     {
         id:11,
@@ -141,6 +151,7 @@ export const games = [
         type: ["story"],
         description:"Stray lets you explore a neon-lit, futuristic city as a stray cat, solving puzzles, sneaking past dangers, and uncovering a mysterious world.",
         copiessold:"Sold ~6 Million+ copies worldwide",
+        store:"https://store.steampowered.com/app/1332010/Stray/",
     },
     {
         id:12,
@@ -154,5 +165,6 @@ export const games = [
         type: ["action", "fav"],
         description:"Explore vast landscapes, solve intricate puzzles, and master combat as Lara evolves from survivor to legend.",
         copiessold:"Sold ~10 Million+ copies worldwide",
+        store:"https://store.steampowered.com/app/391220/Rise_of_the_Tomb_Raider/",
     },
 ];

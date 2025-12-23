@@ -245,13 +245,6 @@ input::placeholder{
     align-items: center;
     gap: 5px;
 }
-.card-p-a-4{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
 
 .card-p-1{
     font-size: large;
@@ -263,15 +256,62 @@ input::placeholder{
     /* width: 100%; */
 }
 
+/* .card-p-a-4{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+} */
+
+.card-p-a-4{
+    display: grid;
+    /* grid-template-columns: repeat(3, minmax(0, 1fr)); */
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    /* gap: 10px; */
+    width: 100%;
+}
+
+.card-p-last{
+    white-space: nowrap;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+
 .card-p-last{
     background-color: rgba(119, 16, 253, 0.534);
     padding: 5px 10px;
     border-radius: 10px;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
+    white-space: nowrap;
+    text-align: center;
+    box-sizing: border-box;
+    /* width: fit-content; */
+
+    /* flex: 1 1 auto;       
+    min-width: 90px;      
+    max-width: 140px;      */
 }
 .card-p-last:hover{
     transform: scale(1.06);
+}
+
+.card-p-buy{
+    background-color: rgba(119, 16, 253, 0.534);
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    white-space: nowrap;
+    text-align: center;
+    box-sizing: border-box;
+    /* margin: 0px; */
+    font-size: large;
+    color: white;
+    margin: 10px 0 10px 0;
 }
 
 .card-p-1-title{
@@ -490,6 +530,13 @@ to {
 
 /**/
 
+.footer-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;    
+}
+
 @media (max-width:720px) {
     .home-div-1{  
     grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
@@ -517,8 +564,14 @@ to {
         font-size: 8px;
     }
     .card-p-last{
-    font-size: 8px;
+    font-size: 10px;
     padding: 5px 5px;
+    margin: 0px;
+    }
+    .card-p-buy{
+    font-size: 10px;
+    padding: 5px 5px;
+    margin: 0px;
     }
 
     .top-bar{
