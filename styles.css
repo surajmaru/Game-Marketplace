@@ -532,14 +532,16 @@ to {
 
 .footer-div{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
     color: white;    
+    /* margin-top: 100% */
 }
 
 @media (max-width:720px) {
     .home-div-1{  
-    grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+    grid-template-columns: repeat(2, minmax(160px,1fr));
     }
 
     .home-div-2{
@@ -713,4 +715,12 @@ to {
     border-radius: 10px;
 }
 
+.footer-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;    
+    font-size: 12px;
+    /* margin-top: calc(100% - 80px); */
+}
 }

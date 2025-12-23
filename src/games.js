@@ -2,7 +2,8 @@ export const games = [
     {
         id:1,
         img: new URL("../img/games/cyberpunk.jpg", import.meta.url).href,
-        video: new URL("../videos/cyberpunk.mp4", import.meta.url).href,
+        // video: new URL("../videos/cyberpunk.mp4", import.meta.url).href,
+        video: "https://res.cloudinary.com/dwsga3yyk/video/upload/v1766510485/cyberpunk_leuluu.mp4",
         title: "Cyberpunk 2077",
         price: 2999,
         ratings: 4.6,
