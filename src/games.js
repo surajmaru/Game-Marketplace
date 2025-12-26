@@ -17,7 +17,7 @@ export const games = [
     {
         id:2,
         img: new URL("../img/games/detroit.jpg", import.meta.url).href,
-        video: new URL("../videos/detroit.mp4", import.meta.url).href,
+        video: "https://res.cloudinary.com/dwsga3yyk/video/upload/v1766513776/detroit_elvmmm.mp4",
         title: "Detroit Became Human",
         price: 2499,
         ratings: 4.8,
@@ -31,7 +31,7 @@ export const games = [
     {
         id:3,
         img: new URL("../img/games/gow-4.jpg", import.meta.url).href,
-        video: new URL("../videos/gow4.mp4", import.meta.url).href,
+        video: "https://res.cloudinary.com/dwsga3yyk/video/upload/v1766788570/gow4_hge2nw.mp4",
         title: "God Of War 2018",
         price: 2199,
         ratings: 4.7,
@@ -45,7 +45,7 @@ export const games = [
     {
         id:4,
         img: new URL("../img/games/gow-5.jpg", import.meta.url).href,
-        video: new URL("../videos/gow5.mp4", import.meta.url).href,
+        video: "https://res.cloudinary.com/dwsga3yyk/video/upload/v1766518866/gow5_l7nkbh.mp4",
         title: "God Of War Ragnarok",
         price: 2999,
         ratings: 5,
@@ -59,7 +59,7 @@ export const games = [
     {
         id:5,
         img: new URL("../img/games/gta5.jpg", import.meta.url).href,
-        video: new URL("../videos/gta5.mp4", import.meta.url).href,
+        video: "https://res.cloudinary.com/dwsga3yyk/video/upload/v1766519575/gta5_gnhngt.mp4",
         title: "Grand Theft Auto 5",
         price: 1599,
         ratings: 4.5,
@@ -73,7 +73,7 @@ export const games = [
     {
         id:6,
         img: new URL("../img/games/last-of-us-1.jpg", import.meta.url).href,
-        video: new URL("../videos/last-of-us1.mp4", import.meta.url).href,
+        video: "https://res.cloudinary.com/dwsga3yyk/video/upload/v1766519873/last-of-us1_uziutr.mp4",
         title: "The Last Of Us Part 1",
         price: 2799,
         ratings: 4.8,
@@ -87,7 +87,7 @@ export const games = [
     {
         id:7,
         img: new URL("../img/games/last-of-us-2.jpg", import.meta.url).href,
-        video: new URL("../videos/last-of-us2.mp4", import.meta.url).href,
+        video: "https://res.cloudinary.com/dwsga3yyk/video/upload/v1766520589/last-of-us2_hu7s6m.mp4",
         title: "The Last Of Us Part 2",
         price: 2999,
         ratings: 5,
@@ -101,7 +101,7 @@ export const games = [
     {
         id:8,
         img: new URL("../img/games/little-nightmares-2.jpg", import.meta.url).href,
-        video: new URL("../videos/little-nightmares2.mp4", import.meta.url).href,
+        video: "https://res.cloudinary.com/dwsga3yyk/video/upload/v1766788391/little-nightmares2_xaclm7.mp4",
         title: "Little Nightmares 2",
         price: 1599,
         ratings: 4.5,
@@ -115,7 +115,7 @@ export const games = [
     {
         id:9,
         img: new URL("../img/games/rdr2.jpg", import.meta.url).href,
-        video: new URL("../videos/rdr2.mp4", import.meta.url).href,
+        video: "https://res.cloudinary.com/dwsga3yyk/video/upload/v1766788393/rdr2_jjqwtv.mp4",
         title: "Red Dead Redemption 2",
         price: 2999,
         ratings: 4.8,
@@ -129,7 +129,7 @@ export const games = [
     {
         id:10,
         img: new URL("../img/games/spiderman-miles.jpg", import.meta.url).href,
-        video: new URL("../videos/spiderman-miles.mp4", import.meta.url).href,
+        video: "https://res.cloudinary.com/dwsga3yyk/video/upload/v1766788427/spiderman-miles_avi3gs.mp4",
         title: "Spider-Man Miles Morales",
         price: 2899,
         ratings: 4.7,
@@ -143,7 +143,7 @@ export const games = [
     {
         id:11,
         img: new URL("../img/games/stray.jpg", import.meta.url).href,
-        video: new URL("../videos/stray.mp4", import.meta.url).href,
+        video: "https://res.cloudinary.com/dwsga3yyk/video/upload/v1766788353/stray_pjli0z.mp4",
         title: "Stray",
         price: 1299,
         ratings: 4.5,
@@ -157,7 +157,7 @@ export const games = [
     {
         id:12,
         img: new URL("../img/games/tomb-raider.jpg", import.meta.url).href,
-        video: new URL("../videos/rise-of-the-tomb-raider.mp4", import.meta.url).href,
+        video:"https://res.cloudinary.com/dwsga3yyk/video/upload/v1766788643/rise-of-the-tomb-raider_s0lbbg.mp4",
         title: "Rise Of The Tomb Raider",
         price: 2899,
         ratings: 4.7,
